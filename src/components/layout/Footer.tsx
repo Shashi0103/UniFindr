@@ -60,7 +60,9 @@ export function Footer() {
         
         <div className="border-t border-border-color mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-text-secondary">
           <p>© {new Date().getFullYear()} UniFindr. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Built with Next.js & Tailwind</p>
+          <p className="mt-2 md:mt-0">
+            Developed By - <span className="font-bold text-gradient">Shashi Kumar Sahu</span>
+          </p>
         </div>
       </div>
     </footer>
