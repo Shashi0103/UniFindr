@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model College {
+  id          Int       @id @default(autoincrement())
+  name        String
+  location    String
+  city        String
+  state       String
+  type        String
+  established Int
+  rating      Float
+  fees        Int
+  imageUrl    String
+  description String
+  website     String
+  ranking     Int?
+  approved    String    @default("AICTE, UGC")
+  campusSize  String?
+  createdAt   DateTime  @default(now())
+
+  courses        Course[]
+  placements     Placement[]
+  reviews        Review[]
+  predictorRules PredictorRule[]
+}
+
+model Course {
+  id        Int     @id @default(autoincrement())
+  name      String
+  duration  String
+  fees      Int
+  seats     Int?
+  collegeId Int
+  college   College @relation(fields: [collegeId], references: [id])
+}
+
+model Placement {
+  id             Int     @id @default(autoincrement())
+  year           Int
+  averagePackage Float
+  highestPackage Float
+  medianPackage  Float
+  placementRate  Float
+  topRecruiters  String
+  collegeId      Int
+  college        College @relation(fields: [collegeId], references: [id])
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  author    String
+  rating    Float
+  title     String
+  comment   String
+  date      DateTime @default(now())
+  collegeId Int
+  college   College  @relation(fields: [collegeId], references: [id])
+}
+
+model PredictorRule {
+  id        Int     @id @default(autoincrement())
+  exam      String
+  minRank   Int
+  maxRank   Int
+  chance    String
+  collegeId Int
+  college   College @relation(fields: [collegeId], references: [id])
+}
