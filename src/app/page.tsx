@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { MouseGlow } from "@/components/ui/MouseGlow";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Search, MapPin, Star, TrendingUp, Users, BookOpen } from "lucide-react";
@@ -22,6 +23,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col w-full relative">
+      <MouseGlow />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-10">
         {/* Background Gradients */}
